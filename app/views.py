@@ -13,7 +13,7 @@ def index(request):
                 message = request.POST.get("message")
                 Mensagem.objects.create(name=nome, email=email, phone=phone, mensagem=message)
                 body = f"Mensagem de {nome}" + "\n" + f"Email= {email}" + "\n" + f"Telefone={phone}" + "\n" + f"Mensagem = {message}"
-                sendMessage(body)
+                # sendMessage(body)
                 return render(request, 'index.html')
         else:
                 return render(request, 'index.html')
@@ -21,7 +21,7 @@ def index(request):
 def games(request):
         return render(request, "games.html")
 
-def cadastro(request): 
+def cadastro(request):
         if request.method == "POST":
                 nome = request.POST.get("name")
                 dt_nasc = request.POST.get("birth_date")
@@ -31,7 +31,6 @@ def cadastro(request):
                 senha = request.POST.get("password")
                 confirm_senha = request.POST.get("conf_password")
                 if confirm_senha == senha:
-                        print("FOI CARAI")
                         Usuario.objects.create(nome=nome, dt_nasc=dt_nasc, email=email, cidade=cidade, pais=pais, senha=senha)
                 return render(request, 'index.html')
         else:
