@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo usuario Ferrugem Games</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../static/assets/css/stylesForms.css" />
+    <link rel="icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
+</head>
+<body>
+    
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" id="signup-form" class="signup-form">
+                    {% csrf_token %}
+                    <h2>Novo Usuario</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="name" id="name" placeholder="Seu nome"/>
+                    </div>
+                    <div class="form-group">
+                        <span style="color: #fff;">Data de nascimento</span>
+                        <input type="date" class="form-input" name="birth_date" id="birth_date" placeholder="Data de Nascimento" >
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="pais" id="pais" placeholder="País"/>
+                    </div>
+                    <div>
+                        <input type="text" class="form-input" name="cidade" id="cidade" placeholder="Cidade"/>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="password" id="password" placeholder="Senha"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-input" name="conf_password" id="conf_password" placeholder="Confirme a senha"/>
+                        <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>Eu concordo com todos os <a href="#" class="term-service">Termos de Serviço.</a></label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit submit" value="Cadastrar"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- js -->
+    <script src="../static/assets/js/script.min.js"></script>
+</body>
+</html>
