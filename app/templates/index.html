@@ -510,7 +510,7 @@
               <h2 class="text-uppercase text-secondary mb-0">
                 Login
               </h2>
-              <form action="{% url 'index' %}">
+              <form action={% url 'index' %} method="post">
                 {% csrf_token %}
                 <div>
                   <label for="">Nome de usuario ou email</label>

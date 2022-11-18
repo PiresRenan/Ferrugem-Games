@@ -6,14 +6,22 @@ from .send_messages import sendMessage
 # Create your views here.
 def index(request):
         if request.method == "POST":
-                render(request, 'index.html')
                 nome = request.POST.get("nome")
                 email = request.POST.get("email")
                 phone = request.POST.get("phone")
                 message = request.POST.get("message")
-                Mensagem.objects.create(name=nome, email=email, phone=phone, mensagem=message)
-                body = f"Mensagem de {nome}" + "\n" + f"Email= {email}" + "\n" + f"Telefone={phone}" + "\n" + f"Mensagem = {message}"
-                # sendMessage(body)
+                if nome and email and phone and message != None:
+                        Mensagem.objects.create(name=nome, email=email, phone=phone, mensagem=message)
+                        body = f"Mensagem de {nome}" + "\n" + f"Email= {email}" + "\n" + f"Telefone={phone}" + "\n" + f"Mensagem = {message}"
+                        sendMessage(body)
+                else:
+                        username = request.POST.get("username")
+                        password = request.POST.get("password")
+                        try:
+                                user = Usuario.objects.get(nome=username)
+                                print(user)
+                        except:
+                                print("Não encontrado")
                 return render(request, 'index.html')
         else:
                 return render(request, 'index.html')
