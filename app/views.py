@@ -10,18 +10,27 @@ def index(request):
                 email = request.POST.get("email")
                 phone = request.POST.get("phone")
                 message = request.POST.get("message")
+                username = request.POST.get("username")
+                password = request.POST.get("password")
                 if nome and email and phone and message != None:
                         Mensagem.objects.create(name=nome, email=email, phone=phone, mensagem=message)
                         body = f"Mensagem de {nome}" + "\n" + f"Email= {email}" + "\n" + f"Telefone={phone}" + "\n" + f"Mensagem = {message}"
                         sendMessage(body)
-                else:
-                        username = request.POST.get("username")
-                        password = request.POST.get("password")
+                elif username and password != None:
                         try:
                                 user = Usuario.objects.get(nome=username)
-                                print(user)
+                                if password == user.senha:
+                                        return render(request, 'games.html')
                         except:
                                 print("Não encontrado")
+                else:
+                        email_change = request.POST.get("email_rec")
+                        pass_change = request.POST.get("password_rec")
+                        conf_pass_change = request.POST.get("confirm_password_rec")
+                        user_change = Usuario.objects.get(email=email_change)
+                        if pass_change == conf_pass_change:
+                                user_change.senha = pass_change
+                                user_change.save()
                 return render(request, 'index.html')
         else:
                 return render(request, 'index.html')

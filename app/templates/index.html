@@ -22,7 +22,7 @@
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i>
       </button>
-      <img src="static/assets/img/ferruege%20games.png" width="110" height="53"  />
+      <a href={% url 'index' %}><img src="static/assets/img/ferruege%20games.png" width="110" height="53"  /></a>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item mx-0 mx-lg-1">
@@ -528,7 +528,7 @@
                   <button>Entrar</button>
                 </div>
                 <div>
-                  <a href="">Não lembro a senha</a><br>
+                  <a href="#reset-modal" data-bs-toggle="modal">Não lembro a senha</a><br>
                   <a href={% url 'cadastro' %}>Novo usuario</a>
                 </div>
               </form>
@@ -539,6 +539,47 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL RESET SENHA -->
+<div class="modal text-center" role="dialog" tabindex="-1" id="reset-modal">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-6 mx-auto">
+              <h2 class="text-uppercase text-secondary mb-0">
+                Recuperação de senha
+              </h2>
+              <form action={% url 'index' %} method="post">
+                {% csrf_token %}
+                <div>
+                  <label for="email_rec">Email</label>
+                  <input type="text" name="email_rec" id="email_rec">
+                </div>
+                <div>
+                  <label for="password_rec">Nova senha</label>
+                  <input type="text" name="password_rec" id="password_rec">
+                </div>
+                <div>
+                  <label for="confirm_password_rec">Confirme senha</label>
+                  <input type="text" name="confirm_password_rec" id="confirm_password_rec">
+                </div>
+                <div>
+                  <button>Enviar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL PRIMEIRO GAME  -->
 <div class="modal text-center" role="dialog" tabindex="-1" id="portfolio-modal-1">
   <div class="modal-dialog modal-lg" role="document">
