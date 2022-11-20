@@ -29,7 +29,7 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Loja</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="games.html">Games</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#games">Games</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#sobre">Sobre</a>
@@ -497,8 +497,8 @@
   <a class="text-center d-block rounded text-white" href="#page-top"><i class="fa fa-chevron-up"></i></a>
 </div>
 <!-- MODAL LOGIN  -->
-<div class="modal text-center" role="dialog" tabindex="-1" id="login-modal">
-  <div class="modal-dialog modal-md" role="document">
+ <div class="modal text-center" role="dialog" tabindex="-1" id="login-modal">
+  <div class="modal-dialog modal-md" role="document" >
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -507,29 +507,44 @@
         <div class="container text-center">
           <div class="row">
             <div class="col-lg-6 mx-auto">
-              <h2 class="text-uppercase text-secondary mb-0">
+              <h2 class="text-uppercase text-secondary mb-0" >
                 Login
               </h2>
               <form action={% url 'index' %} method="post">
                 {% csrf_token %}
-                <div>
-                  <label for="">Nome de usuario ou email</label>
-                  <input type="text" name="username" id="username">
+                <b>
+                  <div class="inputbox">
+                    <input required="required" type="text" name="username" id="username" >
+                    <span>Username ou E-mail</span>
+                    <i></i>
                 </div>
-                <div>
-                  <label for="">Senha</label>
-                  <input type="password" name="password" id="password">
+                <br>
+                <div class="inputbox">
+                  <input required="required" type="password" name="password" id="password">
+                  <span>Senha</span>
+                  <i></i>
                 </div>
-                <div>
+                <br>
+                <div class="lembrar_me">
                   <input type="checkbox" name="remember" id="remember">
                   <label for="remember">Lembrar-me</label>
                 </div>
+              </b>
+              <br>
                 <div>
-                  <button>Entrar</button>
+                  <button class="cta">
+                    <span>entrar</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                  </button>
                 </div>
-                <div>
+                <div class="reset-senha">
+                  <b>
                   <a href="#reset-modal" data-bs-toggle="modal">Não lembro a senha</a><br>
                   <a href={% url 'cadastro' %}>Novo usuario</a>
+                  </b>
                 </div>
               </form>
             </div>
@@ -538,7 +553,7 @@
       </div>
     </div>
   </div>
-</div>
+ </div>
 
 <!-- MODAL RESET SENHA -->
 <div class="modal text-center" role="dialog" tabindex="-1" id="reset-modal">
@@ -554,22 +569,38 @@
               <h2 class="text-uppercase text-secondary mb-0">
                 Recuperação de senha
               </h2>
+              <br>
               <form action={% url 'index' %} method="post">
                 {% csrf_token %}
-                <div>
-                  <label for="email_rec">Email</label>
-                  <input type="text" name="email_rec" id="email_rec">
+                <div class="inputbox">
+                  <input required="required" type="text" name="email_rec" id="email_rec">
+                  <span>E-mail</span>
+                  <i></i>
+              </div>
+                 
+                <br>
+                <div class="inputbox">
+                    <input required="required" type="text" name="password_rec" id="password_rec">
+                    <span>Nova senha</span>
+                    <i></i>
                 </div>
-                <div>
-                  <label for="password_rec">Nova senha</label>
-                  <input type="text" name="password_rec" id="password_rec">
+                <br>
+                
+                <div class="inputbox">
+                  <input required="required" type="text" name="confirm_password_rec" id="confirm_password_rec">
+                  <span>Confirme senha</span>
+                  <i></i>
+                
                 </div>
+                <br>
                 <div>
-                  <label for="confirm_password_rec">Confirme senha</label>
-                  <input type="text" name="confirm_password_rec" id="confirm_password_rec">
-                </div>
-                <div>
-                  <button>Enviar</button>
+                  <button class="cta">
+                    <span>trocar</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                  </button>
                 </div>
               </form>
             </div>
