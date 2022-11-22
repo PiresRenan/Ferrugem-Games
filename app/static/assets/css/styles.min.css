@@ -460,3 +460,6 @@ hr.style-seven:before {
 .cta:active {
  transform: scale(0.95);
 }
+.titulo_model{
+  color: #fff;
+}
