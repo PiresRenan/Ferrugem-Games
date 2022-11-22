@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from .models import Mensagem, Usuario
+from .models import Mensagen, Usuario
 from .send_messages import sendMessage
 
 # Create your views here.
@@ -13,7 +13,7 @@ def index(request):
                 username = request.POST.get("username")
                 password = request.POST.get("password")
                 if nome and email and phone and message != None:
-                        Mensagem.objects.create(name=nome, email=email, phone=phone, mensagem=message)
+                        Mensagen.objects.create(name=nome, email=email, phone=phone, mensagem=message)
                         body = f"Mensagem de {nome}" + "\n" + f"Email= {email}" + "\n" + f"Telefone={phone}" + "\n" + f"Mensagem = {message}"
                         sendMessage(body)
                 elif username and password != None:

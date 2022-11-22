@@ -21,7 +21,7 @@ class Usuario(models.Model):
     def __str__(self):
         return self.nome
 
-class Mensagem(models.Model):
+class Mensagen(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     email = models.CharField(max_length=75, blank=True, null=True)
     phone = models.IntegerField(blank=True, null=True)
